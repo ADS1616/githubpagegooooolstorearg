@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GUIA DE TALLES FUTBOL</title>
+    <link href="https://fonts.googleapis.com/css2?family=Braah+One&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+        }
+        h1 {
+            color: #333;
+        }
+        .important-info, .talles-info {
+            font-size: 18px; 
+            color: #555;
+            font-weight: bold; 
+            font-family: 'Braah One', sans-serif; 
+            margin-top: 10px; 
+            line-height: 1.5; 
+        }
+        .talles-info {
+            margin-top: 20px; 
+        }
+        .gallery {
+            position: relative;
+            max-width: 600px; /* Ajusta el tamaño máximo según lo necesites */
+            margin: auto;
+            overflow: hidden; /* Esconde las imágenes que no están visibles */
+        }
+        .gallery img {
+            width: 100%;
+            display: none; /* Ocultar todas las imágenes por defecto */
+        }
+        .gallery img.active {
+            display: block; /* Mostrar solo la imagen activa */
+        }
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 24px;
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            padding: 10px;
+            z-index: 1;
+        }
+        .prev {
+            left: 10px;
+        }
+        .next {
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>TALLES DE LAS PRENDAS</h1>
+    
+    <div class="important-info">
+        LEER ¡IMPORTANTE! - ANTE CUALQUIER DUDA CONSULTAR SU PREGUNTA NO MOLESTA
+    </div>
+    
+    <div class="talles-info">
+        1) LA PRIMERA TABLA ES PARA CAMISETAS EN VERSIÓN JUGADOR, QUE SON MUY AJUSTADAS (SE RECOMIENDA PEDIR 1 O 2 TALLES MÁS)<br>
+        2) LA SEGUNDA TABLA INCLUYE CAMISETAS VERSIONES FAN-RETRO<br>
+        3) LA TERCERA TABLA CONTIENE TALLES PARA SHORTS<br>
+        4) LA ÚLTIMA TABLA ES PARA LAS MEDIDAS DE CAMPERAS.
+    </div>
+        <div class="gallery">
+     <img src="https://i.postimg.cc/qMzJs3Qy/jugador-jpg.png" alt="Imagen 1"> 
+     <img src="https://i.postimg.cc/V6gfR93B/fan-jpg.png" alt="Imagen 2" class="active"> 
+    <img src="https://i.postimg.cc/7ZzqcrFL/rompeviento-jpg.png" alt="Imagen 3"> 
+    <img src="https://i.postimg.cc/hP6Spt3w/short-jpg.png" alt="Imagen 4"> 
+            <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+            <button class="next" onclick="changeSlide(1)">&#10095;</button>
+        </div>
+   
+        <script>
+            let currentSlide = 0;
+            const slides = document.querySelectorAll('.gallery img');
+            
+            function showSlide(index) {
+                slides.forEach((slide, i) => {
+                    slide.classList.remove('active');
+                    if (i === index) {
+                        slide.classList.add('active');
+                    }
+                });
+            }
+    
+            function changeSlide(direction) {
+                currentSlide += direction;
+                if (currentSlide < 0) {
+                    currentSlide = slides.length - 1; // Vuelve al último slide si está en el primero
+                } else if (currentSlide >= slides.length) {
+                    currentSlide = 0; // Vuelve al primero si está en el último
+                }
+                showSlide(currentSlide);
+            }
+    
+            // Mostrar la primera imagen por defecto
+            showSlide(currentSlide);
+        </script>
+</body>
+</html>
